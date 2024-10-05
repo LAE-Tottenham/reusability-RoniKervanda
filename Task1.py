@@ -1,6 +1,35 @@
 # Help! My code is too messy :( Please help me organise it and extract out the duplications.
 
 # Define your reusable functions here:
+import math 
+def get_triangle_sides(triangle_number):
+    "get the opposite and adjacent sides of a triangle from users input"
+    opp = float(input("Enter your triangle's opposite side length: "))
+    adj = float(input("Enter your triangles's adjacent side length: "))
+    return opp, adj 
+
+def calculate_hypotenuse(opp, adj):
+    "calculate the hypotenuse given the adjacent and opposite sides"
+    return math.sqrt(opp**2 + adj**2)
+
+def weird_calculation():
+    "perform the weird calculation"
+    "get the sides from the first and second triangles"
+    opp1, adj1 = get_triangle_sides(1)
+    opp2, adj2 = get_triangle_sides(2)
+    
+    "calculate the hypotenuse for both triangles"
+    hyp1 = calculate_hypotenuse(opp1, adj1)
+    hyp2 = calculate_hypotenuse(opp2, adj2)
+    
+    "create a third triangle using the hypotenuses of the triangles"
+    hyp3 = calculate_hypotenuse(hyp1, hyp2)
+
+    return hyp3 
+    
+    
+            
+    
 # Make sure each function only does ONE thing!!!!!!!!!!!
 
 
@@ -39,8 +68,46 @@ print(weird_answer)
 # After you have written the reusable functions, answer the following:
 # Questions:
 # 1. What are the preconditions for your code not to break?
+valid user input, if  a non-numeric value is entered the float() would be an error
+lengths must be positive 
+correct use of math.sqrt(), it cannot be negative 
+
 # 2. Validate the user's input based on your preconditions.
-# 3. Why was it useful to use reusable components in this case? Please mention at least 2 reasons and don't forget to contextualise.
+import math 
+def get_triangle_sides(triangle_number):
+    "get the opposite and adjacent sides of a triangle from users input"
+    opp = float(input("Enter your triangle's opposite side length: "))
+    adj = float(input("Enter your triangles's adjacent side length: "))
+    if opp > 0 and adj > 0:
+        print("Sides are valid")
+        return opp, adj 
+    else:
+        print("Sides are invalid")
+        exit()
+
+def calculate_hypotenuse(opp, adj):
+    "calculate the hypotenuse given the adjacent and opposite sides"
+    return math.sqrt(opp**2 + adj**2)
+
+def weird_calculation():
+    "perform the weird calculation"
+    "get the sides from the first and second triangles"
+    opp1, adj1 = get_triangle_sides(1)
+    opp2, adj2 = get_triangle_sides(2)
+    
+    "calculate the hypotenuse for both triangles"
+    hyp1 = calculate_hypotenuse(opp1, adj1)
+    hyp2 = calculate_hypotenuse(opp2, adj2)
+    
+    "create a third triangle using the hypotenuses of the triangles"
+    hyp3 = calculate_hypotenuse(hyp1, hyp2)
+
+    return hyp3 
+# 3. Why was it useful to use reusable components in this case? Please mention at least 2 reasons and don't forget to contextualise. 
+it is useful because we only have one input function which prveents duplication, which makes the code easier to maintain, for example if 
+the formula to find out hypotenuse changes, all releveant calculations reflect the change
+resuable components like get_triangle_sides, calculate_hypotenuse, weird_calculation makes it easier to understand and read, allowing the
+user to not get confused and when resitting the code as the names clearly indicate what each function is for ‹
 
 # Further Tasks:
 # 1. Put your functions in seperate appropriate files and import them in.
